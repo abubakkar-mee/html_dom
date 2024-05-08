@@ -31,20 +31,23 @@
         <button id="containerButton">change container color</button>
     </div>
     <button id="bodyButton">change body color</button>
+    <h1 id="indexShow"></h1>
     <script>
         const colors = ["maroon","coral","orange red","gold","dark khaki","olive drab","lime","teal","sky blue","navy","indigo","beige","tan","slate gray","silver","pink","crimson"];
+        const indexShow = document.getElementById('indexShow')
         const body = document.getElementById("body");
         const container = document.getElementById("container");
         const leftSide = document.getElementById("leftSide");
         const rightSide = document.getElementById("rightSide")
         const bodyButton = document.getElementById("bodyButton")
         const containerButton = document.getElementById("containerButton");
-        const leftSideButton = document.getElementById("leftSidebutton");
+        const leftSideButton = document.getElementById("leftSideButton");
         const rightSideButton = document.getElementById("rightSideButton")
 
         bodyButton.addEventListener("click", () =>{
             const index = Math.floor(Math.random() * (colors.length -1));
             body.style.backgroundColor = colors[index]
+            indexShow.innerText = index;
         })
         containerButton.addEventListener("click", () =>{
             const index = Math.floor(Math.random() * (colors.length -1));
