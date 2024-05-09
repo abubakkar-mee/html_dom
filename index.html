@@ -32,7 +32,33 @@
     </div>
     <button id="bodyButton">change body color</button>
     <h1 id="indexShow"></h1>
+
+    <div class="secondContainer">
+        <form class="secondForm">
+            <label for="firstName">First Name
+            </label>
+            <input type="text" id="firstName">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+            <button id="addButton">Add user</button>
+        </form>
+    </div>
+
+    <div class="userContainer" id="userContainer">
+       
+    </div>
     <script>
+        const collection = [{name:'palash',email:"email@gmail.com"},{name:'hasan',email:'hasan@gmail.com'}]
+        const data = {
+            firstName:"",
+            lastName:"",
+            email:"",
+            password:""
+        }
         const colors = ["maroon","coral","orange red","gold","dark khaki","olive drab","lime","teal","sky blue","navy","indigo","beige","tan","slate gray","silver","pink","crimson"];
         const indexShow = document.getElementById('indexShow')
         const body = document.getElementById("body");
@@ -43,6 +69,42 @@
         const containerButton = document.getElementById("containerButton");
         const leftSideButton = document.getElementById("leftSideButton");
         const rightSideButton = document.getElementById("rightSideButton")
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById("lastName");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const addButton = document.getElementById("addButton");
+        const userContainer = document.getElementById('userContainer')
+
+        firstName.addEventListener("change", (e) =>{
+            data.firstName = e.target.value;
+        })
+        lastName.addEventListener("change", (e) =>{
+            data.lastName = e.target.value;
+        })
+        email.addEventListener("change", (e) =>{
+            data.email = e.target.value;
+        })
+        password.addEventListener("change", (e) =>{
+            data.password = e.target.value
+            
+        })
+        addButton.addEventListener('click', (e) =>{
+          e.preventDefault();
+          collection.push(data)
+          console.log(collection)
+        })
+
+        collection.forEach((user) =>{
+            const userInfo = document.createElement('div')
+            let userName = document.createElement('h4');
+            let userEmail = document.createElement('h5')
+            userName = user.name;
+            userEmail = user.email;
+            userInfo.append(userName,userEmail)
+            userContainer.append(userInfo)
+            console.log(user)
+        })
 
         bodyButton.addEventListener("click", () =>{
             const index = Math.floor(Math.random() * (colors.length -1));
